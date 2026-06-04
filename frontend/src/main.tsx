@@ -12,6 +12,7 @@ import Debt from "./pages/Debt";
 import Governance from "./pages/Governance";
 import Assistant from "./pages/Assistant";
 import Methodology from "./pages/Methodology";
+import DecisionGame from "./pages/DecisionGame";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -28,6 +29,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             <Route path="governance" element={<Governance />} />
             <Route path="assistant" element={<Assistant />} />
             <Route path="methodology" element={<Methodology />} />
+            <Route path="decisions" element={<DecisionGame />} />
           </Route>
         </Routes>
       </HashRouter>

@@ -5,6 +5,17 @@ import EChart from "../components/EChart";
 import { baseOption } from "../lib/echart-theme";
 import { PALETTE } from "../lib/format";
 
+const SOURCES = [
+  { name: "Memorias / EE.FF. Petroperú", what: "Resultados, balance, hitos", url: "https://www.petroperu.com.pe/relacion-con-inversionistas/", label: "petroperu.com.pe › inversionistas" },
+  { name: "SMV", what: "EE.FF. y hechos de importancia (emisor de bonos)", url: "https://www.smv.gob.pe/", label: "smv.gob.pe" },
+  { name: "MEF", what: "Aportes de capital, garantías, deuda pública", url: "https://www.mef.gob.pe/", label: "mef.gob.pe" },
+  { name: "BCRP (API)", what: "Tipo de cambio, precio del crudo (WTI), macro", url: "https://estadisticas.bcrp.gob.pe/estadisticas/series/", label: "estadisticas.bcrp.gob.pe" },
+  { name: "FONAFE", what: "Gobierno corporativo, directorios, escala remunerativa", url: "https://www.fonafe.gob.pe/", label: "fonafe.gob.pe" },
+  { name: "Portal de Transparencia Estándar", what: "Personal y remuneraciones (sueldos)", url: "https://www.transparencia.gob.pe/", label: "transparencia.gob.pe" },
+  { name: "Transparencia Petroperú", what: "Remuneraciones de directorio/gerencia", url: "https://www.petroperu.com.pe/transparencia/", label: "petroperu.com.pe › transparencia" },
+  { name: "Datos Abiertos Perú", what: "Conjuntos diversos del Estado", url: "https://www.datosabiertos.gob.pe/", label: "datosabiertos.gob.pe" },
+];
+
 const MODEL_LABEL: Record<string, string> = {
   prophet: "Prophet (serie temporal aditiva)",
   xgboost: "XGBoost (regresión con rezagos)",
@@ -61,6 +72,34 @@ export default function Methodology() {
           </p>
         </ChartCard>
       )}
+
+      <section className="card">
+        <h3 className="text-sm font-semibold text-accent-cyan mb-2">Fuentes de datos (URLs oficiales)</h3>
+        <div className="overflow-x-auto">
+          <table className="w-full text-xs">
+            <thead>
+              <tr className="text-slate-500 border-b border-ink-600 text-left">
+                <th className="py-1.5 pr-3">Fuente</th><th className="px-3">Qué aporta</th><th className="px-3">URL</th>
+              </tr>
+            </thead>
+            <tbody className="text-slate-300">
+              {SOURCES.map((s) => (
+                <tr key={s.url} className="border-b border-ink-700/50">
+                  <td className="py-1.5 pr-3 whitespace-nowrap font-medium">{s.name}</td>
+                  <td className="px-3">{s.what}</td>
+                  <td className="px-3">
+                    <a href={s.url} target="_blank" rel="noopener noreferrer" className="text-accent-cyan hover:underline break-all">{s.label}</a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p className="text-xs text-slate-500 mt-2">
+          Las cifras financieras y de planilla aún no se ingieren automáticamente desde estas fuentes (requieren
+          transcripción de PDFs / scraping, como hace SalariosPerú con el CAS). Ver <code>data/PROVENANCE.md</code>.
+        </p>
+      </section>
 
       <Faq q="¿Cómo se hace el forecasting?">
         El script <code>analytics/forecasting.py</code> intenta tres modelos en orden de preferencia y usa el primero disponible:

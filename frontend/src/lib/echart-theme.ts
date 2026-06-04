@@ -1,8 +1,9 @@
 // Base de tema oscuro para ECharts (estilo terminal financiera).
 import type { EChartsOption } from "echarts";
 
-export const AXIS_LINE = "#2b3543";
-export const TEXT = "#94a3b8";
+// Tonos neutros que se leen bien tanto en modo oscuro como claro (translúcidos).
+export const AXIS_LINE = "rgba(148,163,184,0.35)";
+export const TEXT = "#64748b";
 
 /** Devuelve una option base que cada gráfico extiende con merge superficial. */
 export function baseOption(): EChartsOption {

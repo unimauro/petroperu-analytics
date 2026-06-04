@@ -5,13 +5,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Paleta estilo terminal financiera (Bloomberg-like, dark-first)
+        // Paleta de superficies dirigida por variables CSS → permite modo día/noche
+        // sin tocar componentes (ver index.css: :root = oscuro, html.light = claro).
         ink: {
-          900: "#0a0e14",
-          800: "#0f141c",
-          700: "#161d27",
-          600: "#1f2937",
-          500: "#2b3543",
+          900: "rgb(var(--ink-900) / <alpha-value>)",
+          800: "rgb(var(--ink-800) / <alpha-value>)",
+          700: "rgb(var(--ink-700) / <alpha-value>)",
+          600: "rgb(var(--ink-600) / <alpha-value>)",
+          500: "rgb(var(--ink-500) / <alpha-value>)",
         },
         accent: {
           amber: "#f5a623",

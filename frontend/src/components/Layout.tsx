@@ -1,6 +1,8 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { useData } from "../lib/store";
 import DataStatusBadge from "./DataStatusBadge";
+import ThemeToggle from "./ThemeToggle";
+import SupportBox from "./SupportBox";
 
 const NAV = [
   { to: "/", label: "Resumen", icon: "★", end: true },
@@ -9,8 +11,9 @@ const NAV = [
   { to: "/investment", label: "Inversión", icon: "◔" },
   { to: "/debt", label: "Deuda", icon: "≣" },
   { to: "/governance", label: "Gobierno", icon: "⌂" },
-  { to: "/assistant", label: "Asistente IA", icon: "✦" },
+  { to: "/assistant", label: "Asistente", icon: "✦" },
   { to: "/methodology", label: "Metodología", icon: "?" },
+  { to: "/decisions", label: "🎮 Juega a ser director", icon: "" },
 ];
 
 export default function Layout() {
@@ -39,20 +42,26 @@ export default function Layout() {
             </NavLink>
           ))}
         </nav>
-        <div className="p-3 border-t border-ink-600 text-[11px] text-slate-600 leading-relaxed">
-          Macro: {meta?.macro_status ?? "—"} (BCRP)
-          <br />
-          Plataforma abierta · sin fines de lucro
+        <div className="p-3 border-t border-ink-600 space-y-3">
+          <SupportBox />
+          <div className="text-[11px] text-slate-600 leading-relaxed">
+            Macro: {meta?.macro_status ?? "—"} (BCRP)
+            <br />
+            Plataforma abierta · sin fines de lucro
+          </div>
         </div>
       </aside>
 
       <div className="flex-1 flex flex-col min-w-0">
         <header className="h-14 shrink-0 bg-ink-900/80 backdrop-blur border-b border-ink-600
                            flex items-center justify-between px-6 sticky top-0 z-10">
-          <div className="text-sm text-slate-400">
+          <div className="text-sm text-slate-400 truncate">
             Evolución financiera, operativa y de gobierno corporativo
           </div>
-          {financials && <DataStatusBadge statuses={financials.data_status} />}
+          <div className="flex items-center gap-2 shrink-0">
+            <ThemeToggle />
+            {financials && <DataStatusBadge statuses={financials.data_status} />}
+          </div>
         </header>
         <main className="flex-1 p-6 overflow-x-hidden">
           <Outlet />

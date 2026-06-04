@@ -57,6 +57,39 @@ function anomalies(rows: FinancialRow[]): Answer {
   return { text: lines.join("\n"), cites: [...new Set([...worst.map((r) => r.year), ...negEq, ...lowCov])] };
 }
 
+function salaries(): Answer {
+  return {
+    text: [
+      "**¿Cuánto gana en promedio un trabajador de Petroperú?**",
+      "Este dashboard **no incluye aún la planilla verificada** de Petroperú (no está en el registro CAS del Estado, porque Petroperú es empresa bajo FONAFE).",
+      "Las fuentes oficiales para obtener esas remuneraciones son:",
+      "• Portal de Transparencia Estándar (gob.pe) — sección Personal/Remuneraciones.",
+      "• Portal de Transparencia de Petroperú (petroperu.com.pe).",
+      "• Escala remunerativa de FONAFE (directorios/gerencias de empresas del Estado).",
+      "Como referencia *ilustrativa* (por verificar): planilla del orden de miles de trabajadores, con remuneraciones de gerencia notablemente altas frente al promedio. Reemplazar por cifras oficiales antes de citar.",
+    ].join("\n"),
+  };
+}
+
+function utilities(rows: FinancialRow[]): Answer {
+  const last = rows[rows.length - 1];
+  const losses = rows.filter((r) => r.net_income < 0).map((r) => r.year);
+  const profits = rows.filter((r) => r.net_income > 0).map((r) => r.year);
+  return {
+    text: [
+      "**¿Petroperú genera utilidades?**",
+      `En el último ejercicio (${last.year}) el resultado neto fue ${usdMillions(last.net_income)} ` +
+        `(${last.net_income >= 0 ? "utilidad" : "pérdida"}, cifra ilustrativa).`,
+      `Años con pérdida en el periodo: ${losses.join(", ") || "ninguno"}.`,
+      `Años con utilidad: ${profits.join(", ") || "ninguno"}.`,
+      last.flag_negative_equity
+        ? `⚠ El patrimonio es negativo (${usdMillions(last.equity)}): aunque haya utilidad puntual, la empresa primero debe reconstruir patrimonio antes de poder repartir al accionista (el Estado).`
+        : "Las utilidades, de existir, se destinan primero a fortalecer el patrimonio y luego al accionista (el Estado).",
+    ].join("\n"),
+    cites: profits.concat(losses),
+  };
+}
+
 function trend(rows: FinancialRow[], key: keyof FinancialRow, label: string): Answer {
   const first = rows[0], last = rows.at(-1)!;
   const a = first[key] as number, b = last[key] as number;
@@ -85,7 +118,15 @@ export function ask(rows: FinancialRow[], question: string): Answer {
     return summarizeYear(rows, year);
   }
 
-  // 3) Anomalías
+  // 3) Sueldos / utilidades
+  if (q.includes("gana") || q.includes("sueldo") || q.includes("salario") || q.includes("remunera") || q.includes("planilla") || q.includes("trabajador")) {
+    return salaries();
+  }
+  if (q.includes("utilidad") || q.includes("ganancia") || q.includes("dividendo") || q.includes("reparte")) {
+    return utilities(rows);
+  }
+
+  // 4) Anomalías
   if (q.includes("anomal") || q.includes("alerta") || q.includes("riesgo") || q.includes("peor")) {
     return anomalies(rows);
   }
@@ -101,11 +142,25 @@ export function ask(rows: FinancialRow[], question: string): Answer {
   return summarizeYear(rows, rows.at(-1)!.year);
 }
 
-export const SUGGESTIONS = [
-  "Explica el ROE",
-  "Resumen del 2022",
-  "¿Qué anomalías hay?",
-  "Tendencia de la deuda",
-  "¿Qué es la cobertura de intereses?",
-  "Resumen del 2020",
+/** Preguntas predefinidas agrupadas — el asistente funciona por botones, sin chat abierto. */
+export const SUGGESTION_GROUPS: { group: string; items: string[] }[] = [
+  {
+    group: "Diagnóstico",
+    items: ["¿Qué anomalías hay?", "¿Petroperú genera utilidades?", "¿Cuánto gana en promedio un trabajador de Petroperú?"],
+  },
+  {
+    group: "Indicadores",
+    items: ["Explica el ROE", "¿Qué es la cobertura de intereses?", "Explica el EBITDA", "¿Qué es la liquidez corriente?"],
+  },
+  {
+    group: "Por año",
+    items: ["Resumen del 2020", "Resumen del 2022", "Resumen del 2024"],
+  },
+  {
+    group: "Tendencias",
+    items: ["Tendencia de la deuda", "Tendencia de ingresos", "Tendencia del patrimonio"],
+  },
 ];
+
+// Compatibilidad: lista plana de sugerencias.
+export const SUGGESTIONS = SUGGESTION_GROUPS.flatMap((g) => g.items);

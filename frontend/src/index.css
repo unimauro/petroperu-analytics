@@ -2,9 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ====== Tema: oscuro por defecto (:root), claro con html.light ============ */
 :root {
   color-scheme: dark;
+  --ink-900: 10 14 20;   /* fondo página  */
+  --ink-800: 15 20 28;   /* cards         */
+  --ink-700: 22 29 39;   /* hover/inputs  */
+  --ink-600: 31 41 55;   /* bordes        */
+  --ink-500: 43 53 67;
 }
+
+html.light {
+  color-scheme: light;
+  --ink-900: 248 250 252; /* slate-50  */
+  --ink-800: 255 255 255; /* white     */
+  --ink-700: 241 245 249; /* slate-100 */
+  --ink-600: 226 232 240; /* slate-200 */
+  --ink-500: 203 213 225; /* slate-300 */
+}
+
+/* En modo claro, los grises de texto (slate-*) deben oscurecerse para contraste.
+   Sobreescribimos las utilidades concretas que usamos (mayor especificidad). */
+html.light .text-slate-100 { color: #0f172a; }
+html.light .text-slate-200 { color: #1e293b; }
+html.light .text-slate-300 { color: #334155; }
+html.light .text-slate-400 { color: #475569; }
+html.light .text-slate-500 { color: #64748b; }
+html.light .text-slate-600 { color: #94a3b8; }
+html.light body { color: #1e293b; }
 
 html,
 body,
@@ -43,7 +68,14 @@ body {
   .nav-link.active {
     @apply bg-ink-700 text-accent-amber font-medium;
   }
+  .btn-chip {
+    @apply text-xs px-2.5 py-1.5 rounded-md border border-ink-600 text-slate-300
+           hover:text-slate-100 hover:border-accent-cyan/50 bg-ink-800 transition-colors;
+  }
 }
+
+/* Sombra de cards más sutil en claro */
+html.light .card { @apply shadow-sm; }
 
 /* Respeto a usuarios que prefieren menos movimiento (accesibilidad). */
 @media (prefers-reduced-motion: reduce) {
