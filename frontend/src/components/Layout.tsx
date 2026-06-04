@@ -45,7 +45,6 @@ export default function Layout() {
         </nav>
         <div className="p-3 border-t border-ink-600 space-y-3">
           <ShareButtons compact />
-          <SupportBox />
           <div className="text-[11px] text-slate-600 leading-relaxed">
             Macro: {meta?.macro_status ?? "—"} (BCRP) · sin fines de lucro
             <br />
@@ -62,10 +61,12 @@ export default function Layout() {
       <div className="flex-1 flex flex-col min-w-0">
         <header className="h-14 shrink-0 bg-ink-900/80 backdrop-blur border-b border-ink-600
                            flex items-center justify-between px-6 sticky top-0 z-10">
-          <div className="text-sm text-slate-400 truncate">
+          <div className="text-sm text-slate-400 truncate hidden md:block">
             Evolución financiera, operativa y de gobierno corporativo
           </div>
           <div className="flex items-center gap-2 shrink-0">
+            <SupportBox compact />
+            <span className="w-px h-6 bg-ink-600" />
             <ThemeToggle />
             {financials && <DataStatusBadge statuses={financials.data_status} />}
           </div>
