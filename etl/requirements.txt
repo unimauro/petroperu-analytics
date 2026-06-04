@@ -1,0 +1,6 @@
+requests>=2.31
+# Opcionales para analytics/forecasting.py (no requeridos por el ETL ni el CI de Pages):
+# prophet>=1.1.5
+# xgboost>=2.0
+# pandas>=2.0
+# scikit-learn>=1.3

@@ -1,0 +1,10 @@
+{
+  "generated_by": "etl_pipeline.py",
+  "macro_status": "verified-live",
+  "years": [
+    2005,
+    2024
+  ],
+  "n_indicators": 16,
+  "disclaimer": "Cifras financieras marcadas 'illustrative' son de demostración. Ver data/PROVENANCE.md."
+}

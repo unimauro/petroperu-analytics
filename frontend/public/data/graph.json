@@ -1,0 +1,436 @@
+{
+  "nodes": [
+    {
+      "id": "Alejandro Toledo",
+      "label": "PresidentePeru",
+      "props": {
+        "role": "Presidente de la República",
+        "organization": "Perú",
+        "start_date": "2001-07-28",
+        "end_date": "2006-07-28",
+        "data_status": "verified"
+      }
+    },
+    {
+      "id": "Alan García Pérez",
+      "label": "PresidentePeru",
+      "props": {
+        "role": "Presidente de la República",
+        "organization": "Perú",
+        "start_date": "2006-07-28",
+        "end_date": "2011-07-28",
+        "data_status": "verified"
+      }
+    },
+    {
+      "id": "Ollanta Humala",
+      "label": "PresidentePeru",
+      "props": {
+        "role": "Presidente de la República",
+        "organization": "Perú",
+        "start_date": "2011-07-28",
+        "end_date": "2016-07-28",
+        "data_status": "verified"
+      }
+    },
+    {
+      "id": "Pedro Pablo Kuczynski",
+      "label": "PresidentePeru",
+      "props": {
+        "role": "Presidente de la República",
+        "organization": "Perú",
+        "start_date": "2016-07-28",
+        "end_date": "2018-03-23",
+        "data_status": "verified"
+      }
+    },
+    {
+      "id": "Martín Vizcarra",
+      "label": "PresidentePeru",
+      "props": {
+        "role": "Presidente de la República",
+        "organization": "Perú",
+        "start_date": "2018-03-23",
+        "end_date": "2020-11-09",
+        "data_status": "verified"
+      }
+    },
+    {
+      "id": "Manuel Merino",
+      "label": "PresidentePeru",
+      "props": {
+        "role": "Presidente de la República",
+        "organization": "Perú",
+        "start_date": "2020-11-10",
+        "end_date": "2020-11-15",
+        "data_status": "verified"
+      }
+    },
+    {
+      "id": "Francisco Sagasti",
+      "label": "PresidentePeru",
+      "props": {
+        "role": "Presidente de la República",
+        "organization": "Perú",
+        "start_date": "2020-11-17",
+        "end_date": "2021-07-28",
+        "data_status": "verified"
+      }
+    },
+    {
+      "id": "Pedro Castillo",
+      "label": "PresidentePeru",
+      "props": {
+        "role": "Presidente de la República",
+        "organization": "Perú",
+        "start_date": "2021-07-28",
+        "end_date": "2022-12-07",
+        "data_status": "verified"
+      }
+    },
+    {
+      "id": "Dina Boluarte",
+      "label": "PresidentePeru",
+      "props": {
+        "role": "Presidente de la República",
+        "organization": "Perú",
+        "start_date": "2022-12-07",
+        "end_date": null,
+        "data_status": "verified"
+      }
+    },
+    {
+      "id": "Ministro de Energía y Minas (2005)",
+      "label": "Ministro",
+      "props": {
+        "role": "Ministro de Energía y Minas",
+        "organization": "MINEM",
+        "start_date": "2005-01-01",
+        "end_date": "2006-07-28",
+        "data_status": "illustrative"
+      }
+    },
+    {
+      "id": "Ministro de Energía y Minas (2011)",
+      "label": "Ministro",
+      "props": {
+        "role": "Ministro de Energía y Minas",
+        "organization": "MINEM",
+        "start_date": "2011-07-28",
+        "end_date": "2016-07-28",
+        "data_status": "illustrative"
+      }
+    },
+    {
+      "id": "Ministro de Energía y Minas (2021)",
+      "label": "Ministro",
+      "props": {
+        "role": "Ministro de Energía y Minas",
+        "organization": "MINEM",
+        "start_date": "2021-07-28",
+        "end_date": "2022-12-07",
+        "data_status": "illustrative"
+      }
+    },
+    {
+      "id": "Ministro de Economía y Finanzas (2022)",
+      "label": "Ministro",
+      "props": {
+        "role": "Ministro de Economía y Finanzas",
+        "organization": "MEF",
+        "start_date": "2022-12-10",
+        "end_date": null,
+        "data_status": "illustrative"
+      }
+    },
+    {
+      "id": "Presidente del Directorio (2014)",
+      "label": "Directorio",
+      "props": {
+        "role": "Presidente del Directorio",
+        "organization": "Petroperú",
+        "start_date": "2014-01-01",
+        "end_date": "2017-12-31",
+        "data_status": "illustrative"
+      }
+    },
+    {
+      "id": "FONAFE",
+      "label": "Persona",
+      "props": {}
+    },
+    {
+      "id": "Petroperú",
+      "label": "Empresa",
+      "props": {}
+    },
+    {
+      "id": "Presidente del Directorio (2018)",
+      "label": "Directorio",
+      "props": {
+        "role": "Presidente del Directorio",
+        "organization": "Petroperú",
+        "start_date": "2018-01-01",
+        "end_date": "2021-12-31",
+        "data_status": "illustrative"
+      }
+    },
+    {
+      "id": "Presidente del Directorio (2022)",
+      "label": "Directorio",
+      "props": {
+        "role": "Presidente del Directorio",
+        "organization": "Petroperú",
+        "start_date": "2022-01-01",
+        "end_date": "2023-12-31",
+        "data_status": "illustrative"
+      }
+    },
+    {
+      "id": "Presidente del Directorio (2024)",
+      "label": "Directorio",
+      "props": {
+        "role": "Presidente del Directorio",
+        "organization": "Petroperú",
+        "start_date": "2024-01-01",
+        "end_date": null,
+        "data_status": "illustrative"
+      }
+    },
+    {
+      "id": "Gerente General (2016)",
+      "label": "Gerente",
+      "props": {
+        "role": "Gerente General",
+        "organization": "Petroperú",
+        "start_date": "2016-01-01",
+        "end_date": "2019-12-31",
+        "data_status": "illustrative"
+      }
+    },
+    {
+      "id": "Gerente General (2020)",
+      "label": "Gerente",
+      "props": {
+        "role": "Gerente General",
+        "organization": "Petroperú",
+        "start_date": "2020-01-01",
+        "end_date": "2022-12-31",
+        "data_status": "illustrative"
+      }
+    },
+    {
+      "id": "Gerente General (2023)",
+      "label": "Gerente",
+      "props": {
+        "role": "Gerente General",
+        "organization": "Petroperú",
+        "start_date": "2023-01-01",
+        "end_date": null,
+        "data_status": "illustrative"
+      }
+    },
+    {
+      "id": "Estado Peruano",
+      "label": "Persona",
+      "props": {}
+    }
+  ],
+  "edges": [
+    {
+      "source": "Alejandro Toledo",
+      "target": "Ministro de Energía y Minas (2005)",
+      "type": "APPOINTED"
+    },
+    {
+      "source": "Ollanta Humala",
+      "target": "Ministro de Energía y Minas (2011)",
+      "type": "APPOINTED"
+    },
+    {
+      "source": "Pedro Castillo",
+      "target": "Ministro de Energía y Minas (2021)",
+      "type": "APPOINTED"
+    },
+    {
+      "source": "Dina Boluarte",
+      "target": "Ministro de Economía y Finanzas (2022)",
+      "type": "APPOINTED"
+    },
+    {
+      "source": "FONAFE",
+      "target": "Presidente del Directorio (2014)",
+      "type": "APPOINTED"
+    },
+    {
+      "source": "Presidente del Directorio (2014)",
+      "target": "Petroperú",
+      "type": "MANAGED"
+    },
+    {
+      "source": "FONAFE",
+      "target": "Presidente del Directorio (2018)",
+      "type": "APPOINTED"
+    },
+    {
+      "source": "Presidente del Directorio (2018)",
+      "target": "Petroperú",
+      "type": "MANAGED"
+    },
+    {
+      "source": "FONAFE",
+      "target": "Presidente del Directorio (2022)",
+      "type": "APPOINTED"
+    },
+    {
+      "source": "Presidente del Directorio (2022)",
+      "target": "Petroperú",
+      "type": "MANAGED"
+    },
+    {
+      "source": "FONAFE",
+      "target": "Presidente del Directorio (2024)",
+      "type": "APPOINTED"
+    },
+    {
+      "source": "Presidente del Directorio (2024)",
+      "target": "Petroperú",
+      "type": "MANAGED"
+    },
+    {
+      "source": "Petroperú",
+      "target": "Gerente General (2016)",
+      "type": "APPOINTED"
+    },
+    {
+      "source": "Gerente General (2016)",
+      "target": "Petroperú",
+      "type": "MANAGED"
+    },
+    {
+      "source": "Gerente General (2016)",
+      "target": "Petroperú",
+      "type": "REPORTED_TO"
+    },
+    {
+      "source": "Petroperú",
+      "target": "Gerente General (2020)",
+      "type": "APPOINTED"
+    },
+    {
+      "source": "Gerente General (2020)",
+      "target": "Petroperú",
+      "type": "MANAGED"
+    },
+    {
+      "source": "Gerente General (2020)",
+      "target": "Petroperú",
+      "type": "REPORTED_TO"
+    },
+    {
+      "source": "Petroperú",
+      "target": "Gerente General (2023)",
+      "type": "APPOINTED"
+    },
+    {
+      "source": "Gerente General (2023)",
+      "target": "Petroperú",
+      "type": "MANAGED"
+    },
+    {
+      "source": "Gerente General (2023)",
+      "target": "Petroperú",
+      "type": "REPORTED_TO"
+    },
+    {
+      "source": "Estado Peruano",
+      "target": "Petroperú",
+      "type": "APPOINTED"
+    },
+    {
+      "source": "Estado Peruano",
+      "target": "FONAFE",
+      "type": "APPOINTED"
+    },
+    {
+      "source": "Alan García Pérez",
+      "target": "Alejandro Toledo",
+      "type": "REPLACED"
+    },
+    {
+      "source": "Ollanta Humala",
+      "target": "Alan García Pérez",
+      "type": "REPLACED"
+    },
+    {
+      "source": "Pedro Pablo Kuczynski",
+      "target": "Ollanta Humala",
+      "type": "REPLACED"
+    },
+    {
+      "source": "Martín Vizcarra",
+      "target": "Pedro Pablo Kuczynski",
+      "type": "REPLACED"
+    },
+    {
+      "source": "Manuel Merino",
+      "target": "Martín Vizcarra",
+      "type": "REPLACED"
+    },
+    {
+      "source": "Francisco Sagasti",
+      "target": "Manuel Merino",
+      "type": "REPLACED"
+    },
+    {
+      "source": "Pedro Castillo",
+      "target": "Francisco Sagasti",
+      "type": "REPLACED"
+    },
+    {
+      "source": "Dina Boluarte",
+      "target": "Pedro Castillo",
+      "type": "REPLACED"
+    },
+    {
+      "source": "Ministro de Energía y Minas (2011)",
+      "target": "Ministro de Energía y Minas (2005)",
+      "type": "REPLACED"
+    },
+    {
+      "source": "Ministro de Energía y Minas (2021)",
+      "target": "Ministro de Energía y Minas (2011)",
+      "type": "REPLACED"
+    },
+    {
+      "source": "Presidente del Directorio (2018)",
+      "target": "Presidente del Directorio (2014)",
+      "type": "REPLACED"
+    },
+    {
+      "source": "Presidente del Directorio (2022)",
+      "target": "Presidente del Directorio (2018)",
+      "type": "REPLACED"
+    },
+    {
+      "source": "Presidente del Directorio (2024)",
+      "target": "Presidente del Directorio (2022)",
+      "type": "REPLACED"
+    },
+    {
+      "source": "Gerente General (2020)",
+      "target": "Gerente General (2016)",
+      "type": "REPLACED"
+    },
+    {
+      "source": "Gerente General (2023)",
+      "target": "Gerente General (2020)",
+      "type": "REPLACED"
+    },
+    {
+      "source": "FONAFE",
+      "target": "Petroperú",
+      "type": "REPLACED"
+    }
+  ]
+}

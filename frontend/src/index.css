@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-ink-900 text-slate-200 font-sans antialiased;
+}
+
+/* Scrollbar discreto estilo terminal */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-ink-600 rounded;
+}
+::-webkit-scrollbar-track {
+  @apply bg-ink-900;
+}
+
+@layer components {
+  .card {
+    @apply bg-ink-800 border border-ink-600 rounded-lg p-4 shadow-lg;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    @apply font-mono;
+  }
+  .nav-link {
+    @apply flex items-center gap-3 px-3 py-2 rounded-md text-sm text-slate-400
+           hover:bg-ink-700 hover:text-slate-100 transition-colors;
+  }
+  .nav-link.active {
+    @apply bg-ink-700 text-accent-amber font-medium;
+  }
+}
+
+/* Respeto a usuarios que prefieren menos movimiento (accesibilidad). */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

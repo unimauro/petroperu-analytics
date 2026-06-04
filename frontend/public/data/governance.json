@@ -1,0 +1,224 @@
+{
+  "rows": [
+    {
+      "entity_type": "PRESIDENT_PERU",
+      "person": "Alejandro Toledo",
+      "role": "Presidente de la República",
+      "organization": "Perú",
+      "start_date": "2001-07-28",
+      "end_date": "2006-07-28",
+      "appointed_by": "",
+      "data_status": "verified"
+    },
+    {
+      "entity_type": "PRESIDENT_PERU",
+      "person": "Alan García Pérez",
+      "role": "Presidente de la República",
+      "organization": "Perú",
+      "start_date": "2006-07-28",
+      "end_date": "2011-07-28",
+      "appointed_by": "",
+      "data_status": "verified"
+    },
+    {
+      "entity_type": "PRESIDENT_PERU",
+      "person": "Ollanta Humala",
+      "role": "Presidente de la República",
+      "organization": "Perú",
+      "start_date": "2011-07-28",
+      "end_date": "2016-07-28",
+      "appointed_by": "",
+      "data_status": "verified"
+    },
+    {
+      "entity_type": "PRESIDENT_PERU",
+      "person": "Pedro Pablo Kuczynski",
+      "role": "Presidente de la República",
+      "organization": "Perú",
+      "start_date": "2016-07-28",
+      "end_date": "2018-03-23",
+      "appointed_by": "",
+      "data_status": "verified"
+    },
+    {
+      "entity_type": "PRESIDENT_PERU",
+      "person": "Martín Vizcarra",
+      "role": "Presidente de la República",
+      "organization": "Perú",
+      "start_date": "2018-03-23",
+      "end_date": "2020-11-09",
+      "appointed_by": "",
+      "data_status": "verified"
+    },
+    {
+      "entity_type": "PRESIDENT_PERU",
+      "person": "Manuel Merino",
+      "role": "Presidente de la República",
+      "organization": "Perú",
+      "start_date": "2020-11-10",
+      "end_date": "2020-11-15",
+      "appointed_by": "",
+      "data_status": "verified"
+    },
+    {
+      "entity_type": "PRESIDENT_PERU",
+      "person": "Francisco Sagasti",
+      "role": "Presidente de la República",
+      "organization": "Perú",
+      "start_date": "2020-11-17",
+      "end_date": "2021-07-28",
+      "appointed_by": "",
+      "data_status": "verified"
+    },
+    {
+      "entity_type": "PRESIDENT_PERU",
+      "person": "Pedro Castillo",
+      "role": "Presidente de la República",
+      "organization": "Perú",
+      "start_date": "2021-07-28",
+      "end_date": "2022-12-07",
+      "appointed_by": "",
+      "data_status": "verified"
+    },
+    {
+      "entity_type": "PRESIDENT_PERU",
+      "person": "Dina Boluarte",
+      "role": "Presidente de la República",
+      "organization": "Perú",
+      "start_date": "2022-12-07",
+      "end_date": "",
+      "appointed_by": "",
+      "data_status": "verified"
+    },
+    {
+      "entity_type": "MINISTER",
+      "person": "Ministro de Energía y Minas (2005)",
+      "role": "Ministro de Energía y Minas",
+      "organization": "MINEM",
+      "start_date": "2005-01-01",
+      "end_date": "2006-07-28",
+      "appointed_by": "Alejandro Toledo",
+      "data_status": "illustrative"
+    },
+    {
+      "entity_type": "MINISTER",
+      "person": "Ministro de Energía y Minas (2011)",
+      "role": "Ministro de Energía y Minas",
+      "organization": "MINEM",
+      "start_date": "2011-07-28",
+      "end_date": "2016-07-28",
+      "appointed_by": "Ollanta Humala",
+      "data_status": "illustrative"
+    },
+    {
+      "entity_type": "MINISTER",
+      "person": "Ministro de Energía y Minas (2021)",
+      "role": "Ministro de Energía y Minas",
+      "organization": "MINEM",
+      "start_date": "2021-07-28",
+      "end_date": "2022-12-07",
+      "appointed_by": "Pedro Castillo",
+      "data_status": "illustrative"
+    },
+    {
+      "entity_type": "MINISTER",
+      "person": "Ministro de Economía y Finanzas (2022)",
+      "role": "Ministro de Economía y Finanzas",
+      "organization": "MEF",
+      "start_date": "2022-12-10",
+      "end_date": "",
+      "appointed_by": "Dina Boluarte",
+      "data_status": "illustrative"
+    },
+    {
+      "entity_type": "BOARD_CHAIR",
+      "person": "Presidente del Directorio (2014)",
+      "role": "Presidente del Directorio",
+      "organization": "Petroperú",
+      "start_date": "2014-01-01",
+      "end_date": "2017-12-31",
+      "appointed_by": "FONAFE",
+      "data_status": "illustrative"
+    },
+    {
+      "entity_type": "BOARD_CHAIR",
+      "person": "Presidente del Directorio (2018)",
+      "role": "Presidente del Directorio",
+      "organization": "Petroperú",
+      "start_date": "2018-01-01",
+      "end_date": "2021-12-31",
+      "appointed_by": "FONAFE",
+      "data_status": "illustrative"
+    },
+    {
+      "entity_type": "BOARD_CHAIR",
+      "person": "Presidente del Directorio (2022)",
+      "role": "Presidente del Directorio",
+      "organization": "Petroperú",
+      "start_date": "2022-01-01",
+      "end_date": "2023-12-31",
+      "appointed_by": "FONAFE",
+      "data_status": "illustrative"
+    },
+    {
+      "entity_type": "BOARD_CHAIR",
+      "person": "Presidente del Directorio (2024)",
+      "role": "Presidente del Directorio",
+      "organization": "Petroperú",
+      "start_date": "2024-01-01",
+      "end_date": "",
+      "appointed_by": "FONAFE",
+      "data_status": "illustrative"
+    },
+    {
+      "entity_type": "GENERAL_MANAGER",
+      "person": "Gerente General (2016)",
+      "role": "Gerente General",
+      "organization": "Petroperú",
+      "start_date": "2016-01-01",
+      "end_date": "2019-12-31",
+      "appointed_by": "Petroperú",
+      "data_status": "illustrative"
+    },
+    {
+      "entity_type": "GENERAL_MANAGER",
+      "person": "Gerente General (2020)",
+      "role": "Gerente General",
+      "organization": "Petroperú",
+      "start_date": "2020-01-01",
+      "end_date": "2022-12-31",
+      "appointed_by": "Petroperú",
+      "data_status": "illustrative"
+    },
+    {
+      "entity_type": "GENERAL_MANAGER",
+      "person": "Gerente General (2023)",
+      "role": "Gerente General",
+      "organization": "Petroperú",
+      "start_date": "2023-01-01",
+      "end_date": "",
+      "appointed_by": "Petroperú",
+      "data_status": "illustrative"
+    },
+    {
+      "entity_type": "COMPANY",
+      "person": "Petroperú",
+      "role": "Empresa estatal de hidrocarburos",
+      "organization": "Estado Peruano",
+      "start_date": "1969-07-24",
+      "end_date": "",
+      "appointed_by": "Estado Peruano",
+      "data_status": "verified"
+    },
+    {
+      "entity_type": "COMPANY",
+      "person": "FONAFE",
+      "role": "Holding de empresas del Estado",
+      "organization": "Estado Peruano",
+      "start_date": "1999-01-01",
+      "end_date": "",
+      "appointed_by": "Estado Peruano",
+      "data_status": "verified"
+    }
+  ]
+}

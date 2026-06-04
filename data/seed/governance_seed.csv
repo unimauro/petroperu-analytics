@@ -1,0 +1,23 @@
+entity_type,person,role,organization,start_date,end_date,appointed_by,data_status
+PRESIDENT_PERU,Alejandro Toledo,Presidente de la República,Perú,2001-07-28,2006-07-28,,verified
+PRESIDENT_PERU,Alan García Pérez,Presidente de la República,Perú,2006-07-28,2011-07-28,,verified
+PRESIDENT_PERU,Ollanta Humala,Presidente de la República,Perú,2011-07-28,2016-07-28,,verified
+PRESIDENT_PERU,Pedro Pablo Kuczynski,Presidente de la República,Perú,2016-07-28,2018-03-23,,verified
+PRESIDENT_PERU,Martín Vizcarra,Presidente de la República,Perú,2018-03-23,2020-11-09,,verified
+PRESIDENT_PERU,Manuel Merino,Presidente de la República,Perú,2020-11-10,2020-11-15,,verified
+PRESIDENT_PERU,Francisco Sagasti,Presidente de la República,Perú,2020-11-17,2021-07-28,,verified
+PRESIDENT_PERU,Pedro Castillo,Presidente de la República,Perú,2021-07-28,2022-12-07,,verified
+PRESIDENT_PERU,Dina Boluarte,Presidente de la República,Perú,2022-12-07,,,verified
+MINISTER,Ministro de Energía y Minas (2005),Ministro de Energía y Minas,MINEM,2005-01-01,2006-07-28,Alejandro Toledo,illustrative
+MINISTER,Ministro de Energía y Minas (2011),Ministro de Energía y Minas,MINEM,2011-07-28,2016-07-28,Ollanta Humala,illustrative
+MINISTER,Ministro de Energía y Minas (2021),Ministro de Energía y Minas,MINEM,2021-07-28,2022-12-07,Pedro Castillo,illustrative
+MINISTER,Ministro de Economía y Finanzas (2022),Ministro de Economía y Finanzas,MEF,2022-12-10,,Dina Boluarte,illustrative
+BOARD_CHAIR,Presidente del Directorio (2014),Presidente del Directorio,Petroperú,2014-01-01,2017-12-31,FONAFE,illustrative
+BOARD_CHAIR,Presidente del Directorio (2018),Presidente del Directorio,Petroperú,2018-01-01,2021-12-31,FONAFE,illustrative
+BOARD_CHAIR,Presidente del Directorio (2022),Presidente del Directorio,Petroperú,2022-01-01,2023-12-31,FONAFE,illustrative
+BOARD_CHAIR,Presidente del Directorio (2024),Presidente del Directorio,Petroperú,2024-01-01,,FONAFE,illustrative
+GENERAL_MANAGER,Gerente General (2016),Gerente General,Petroperú,2016-01-01,2019-12-31,Petroperú,illustrative
+GENERAL_MANAGER,Gerente General (2020),Gerente General,Petroperú,2020-01-01,2022-12-31,Petroperú,illustrative
+GENERAL_MANAGER,Gerente General (2023),Gerente General,Petroperú,2023-01-01,,Petroperú,illustrative
+COMPANY,Petroperú,Empresa estatal de hidrocarburos,Estado Peruano,1969-07-24,,Estado Peruano,verified
+COMPANY,FONAFE,Holding de empresas del Estado,Estado Peruano,1999-01-01,,Estado Peruano,verified
