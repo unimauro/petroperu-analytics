@@ -3,11 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Análisis histórico financiero, operativo y de gobierno corporativo de Petroperú (2005–presente). Datos públicos." />
+
+    <!-- ===================== SEO ===================== -->
+    <title>Petroperú Analytics — 20 años de finanzas, operaciones y gobierno corporativo</title>
+    <meta name="description" content="Dashboard público de la evolución financiera, operativa y de gobierno corporativo de Petroperú (2005–presente): 16 indicadores, 5 tableros, grafo de gobierno interactivo y un simulador para reflotar la empresa. Datos públicos, código abierto." />
+    <meta name="keywords" content="Petroperú, análisis financiero, EBITDA, ROE, ROA, deuda, gobierno corporativo, Perú, datos abiertos, dashboard, estados financieros, FONAFE, Talara, refinería, transparencia" />
+    <meta name="author" content="Carlos Cárdenas Fernández (unimauro)" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0a0e14" />
+    <link rel="canonical" href="https://unimauro.github.io/petroperu-analytics/" />
+
+    <!-- ================= Open Graph (WhatsApp, LinkedIn, Facebook) ============ -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Petroperú Analytics" />
+    <meta property="og:title" content="Petroperú Analytics — ¿puedes reflotar Petroperú?" />
+    <meta property="og:description" content="20 años de finanzas, operaciones y gobierno corporativo de Petroperú en tableros interactivos. Incluye 'Juega a ser director', un simulador de decisiones para reflotar la empresa." />
+    <meta property="og:url" content="https://unimauro.github.io/petroperu-analytics/" />
+    <meta property="og:image" content="https://unimauro.github.io/petroperu-analytics/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Petroperú Analytics: tableros financieros y simulador 'Juega a ser director'." />
+    <meta property="og:locale" content="es_PE" />
+
+    <!-- ===================== Twitter / X ===================== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Petroperú Analytics — ¿puedes reflotar Petroperú?" />
+    <meta name="twitter:description" content="20 años de finanzas, operaciones y gobierno corporativo de Petroperú + simulador de decisiones de gerencia." />
+    <meta name="twitter:image" content="https://unimauro.github.io/petroperu-analytics/og.png" />
+    <meta name="twitter:creator" content="@unimauro" />
+
+    <!-- ===================== Favicons ===================== -->
+    <link rel="icon" type="image/svg+xml" href="/petroperu-analytics/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/petroperu-analytics/favicon.ico" />
+    <link rel="apple-touch-icon" href="/petroperu-analytics/apple-touch-icon.png" />
+
+    <!-- ===================== Datos estructurados (JSON-LD) ===================== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Petroperú Analytics",
+      "url": "https://unimauro.github.io/petroperu-analytics/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Dashboard público de análisis financiero, operativo y de gobierno corporativo de Petroperú (2005–presente).",
+      "inLanguage": "es",
+      "isAccessibleForFree": true,
+      "author": {
+        "@type": "Person",
+        "name": "Carlos Cárdenas Fernández",
+        "alternateName": "unimauro",
+        "url": "https://github.com/unimauro"
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <title>Petroperú Analytics</title>
     <script>
       // Evita el "flash" de tema: aplica la preferencia guardada antes de pintar.
       try {

@@ -3,6 +3,7 @@ import { useData } from "../lib/store";
 import DataStatusBadge from "./DataStatusBadge";
 import ThemeToggle from "./ThemeToggle";
 import SupportBox from "./SupportBox";
+import ShareButtons from "./ShareButtons";
 
 const NAV = [
   { to: "/", label: "Resumen", icon: "★", end: true },
@@ -43,11 +44,17 @@ export default function Layout() {
           ))}
         </nav>
         <div className="p-3 border-t border-ink-600 space-y-3">
+          <ShareButtons compact />
           <SupportBox />
           <div className="text-[11px] text-slate-600 leading-relaxed">
-            Macro: {meta?.macro_status ?? "—"} (BCRP)
+            Macro: {meta?.macro_status ?? "—"} (BCRP) · sin fines de lucro
             <br />
-            Plataforma abierta · sin fines de lucro
+            Hecho por{" "}
+            <a href="https://github.com/unimauro" target="_blank" rel="noopener noreferrer"
+               className="text-slate-500 hover:text-accent-amber">Carlos Cárdenas Fernández</a>{" "}
+            <span className="text-slate-700">·</span>{" "}
+            <a href="https://github.com/unimauro" target="_blank" rel="noopener noreferrer"
+               className="text-slate-500 hover:text-accent-amber">@unimauro</a>
           </div>
         </div>
       </aside>

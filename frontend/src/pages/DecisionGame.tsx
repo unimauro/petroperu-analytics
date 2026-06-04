@@ -7,6 +7,7 @@ import EChart from "../components/EChart";
 import { baseOption } from "../lib/echart-theme";
 import { PALETTE, usdMillions, ratio } from "../lib/format";
 import { latest } from "../lib/selectors";
+import ShareButtons from "../components/ShareButtons";
 import type { FinancialRow } from "../lib/data";
 
 export default function DecisionGame() {
@@ -138,6 +139,11 @@ function Game({ rows }: { rows: FinancialRow[] }) {
               : <><strong className="text-accent-amber">Aún no reflota.</strong> Con estas decisiones no se logra patrimonio positivo y ≤ {TARGET}x dentro de {d.horizon} años. Prueba con más EBITDA, nuevos productos, capitalización o inversión privada.</>}
           </div>
         </div>
+      </div>
+
+      <div className="card flex items-center justify-between gap-4 flex-wrap">
+        <span className="text-sm text-slate-400">¿Lograste reflotarla? Reta a alguien a hacerlo mejor 👇</span>
+        <ShareButtons />
       </div>
 
       {/* Resultados */}
