@@ -77,6 +77,16 @@ export interface Meta {
   disclaimer: string;
 }
 
+export interface Forecast {
+  metric: string;
+  model: string;
+  future_years: number[];
+  forecast: number[];
+  lower: number[];
+  upper: number[];
+  history: { years: number[]; values: number[] };
+}
+
 const base = import.meta.env.BASE_URL; // respeta el subpath de GitHub Pages
 
 async function getJSON<T>(name: string): Promise<T> {
@@ -89,3 +99,5 @@ export const loadFinancials = () => getJSON<Financials>("financials.json");
 export const loadGovernance = () => getJSON<{ rows: GovRow[] }>("governance.json");
 export const loadGraph = () => getJSON<GraphData>("graph.json");
 export const loadMeta = () => getJSON<Meta>("meta.json");
+// El forecast es opcional: si no existe el archivo, devolvemos null en vez de fallar.
+export const loadForecast = () => getJSON<Forecast>("forecast.json").catch(() => null);

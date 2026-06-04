@@ -3,12 +3,14 @@ import { useData } from "../lib/store";
 import DataStatusBadge from "./DataStatusBadge";
 
 const NAV = [
-  { to: "/", label: "Ejecutivo", icon: "▣", end: true },
+  { to: "/", label: "Resumen", icon: "★", end: true },
+  { to: "/executive", label: "Ejecutivo", icon: "▣" },
   { to: "/financial", label: "Financiero", icon: "₪" },
   { to: "/investment", label: "Inversión", icon: "◔" },
   { to: "/debt", label: "Deuda", icon: "≣" },
   { to: "/governance", label: "Gobierno", icon: "⌂" },
   { to: "/assistant", label: "Asistente IA", icon: "✦" },
+  { to: "/methodology", label: "Metodología", icon: "?" },
 ];
 
 export default function Layout() {
