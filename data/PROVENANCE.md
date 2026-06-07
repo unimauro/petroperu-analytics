@@ -25,14 +25,17 @@
 
 | Archivo | Estado | Notas |
 |---|---|---|
-| `seed/petroperu_financials_seed.csv` | `mixto` | **2023, 2024 y 2025 = REALES** (EE.FF. auditados). 2005–2022 = ilustrativos (pendiente transcribir) |
+| `seed/petroperu_financials_seed.csv` | `verified` | **Serie completa 2019–2025 = REAL** (EE.FF. auditados, US$ miles). Años ≤2018 retirados (PDFs antiguos sin capa de texto / no publicados). |
 
 ### Años verificados (fuente primaria)
 
-| Año | Fuente | URL |
+| Años | Fuente | URL |
 |---|---|---|
-| 2024 y 2023 | EE.FF. auditados 2024-2023 (US$ miles) | https://inversionistas.petroperu.com.pe/wp-content/uploads/2025/07/estados-financieros-2024-2023.pdf |
-| 2025 (4T, anual) | EE.FF. 2025 IV trimestre (US$ miles) | https://inversionistas.petroperu.com.pe/wp-content/uploads/2026/02/estados-financieros-2025-iv-trimestre.pdf |
+| 2020 y 2019 | EE.FF. auditados 2020 | https://www.petroperu.com.pe/Docs/spa/files/transparencia/estadosfinancierosauditados2020.pdf |
+| 2021 y 2020 | EE.FF. auditados 2021 | https://www.petroperu.com.pe/Docs/spa/files/transparencia/estadosfinancierosauditados2021.pdf |
+| 2023 y 2022 | EE.FF. auditados 2023-2022 | https://www.petroperu.com.pe/Docs/spa/files/transparencia/estados-financieros-2023-2022.pdf |
+| 2024 y 2023 | EE.FF. auditados 2024-2023 | https://inversionistas.petroperu.com.pe/wp-content/uploads/2025/07/estados-financieros-2024-2023.pdf |
+| 2025 (4T, anual) | EE.FF. 2025 IV trimestre | https://inversionistas.petroperu.com.pe/wp-content/uploads/2026/02/estados-financieros-2025-iv-trimestre.pdf |
 | 1T 2026 (highlight) | Reporte financiero 1T 2026 | https://inversionistas.petroperu.com.pe/en/quarterly-earnings-releases/ |
 
 **Validación cruzada:** el capital de trabajo 2025 calculado por el motor (≈ -US$1,558 M) coincide con el

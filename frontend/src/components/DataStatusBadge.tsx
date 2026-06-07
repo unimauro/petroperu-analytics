@@ -49,16 +49,16 @@ export default function DataStatusBadge({ statuses }: Props) {
             <h3 className="text-base font-semibold text-slate-100">¿Qué significan los datos?</h3>
 
             <p>
-              <strong className="text-accent-cyan">◑ Datos mixtos.</strong> Los ejercicios{" "}
-              <strong className="text-accent-green">2023, 2024 y 2025 son REALES</strong>, tomados de los
-              Estados Financieros auditados de Petroperú (publicados en su web de inversionistas y la SMV).
-              Además, el <strong>1T 2026</strong> se muestra en el Resumen con cifras oficiales.
+              <strong className="text-accent-green">✓ Datos reales.</strong> Toda la serie{" "}
+              <strong>2019–2025</strong> proviene de los <strong>Estados Financieros auditados</strong> de
+              Petroperú (US$ miles), publicados en su portal de inversionistas y la SMV. Además, el{" "}
+              <strong>1T 2026</strong> se muestra en el Resumen con cifras oficiales.
             </p>
-            <p>
-              Los años <strong className="text-accent-amber">2005–2022</strong> siguen siendo{" "}
-              <strong>ilustrativos</strong> (demostración): imitan tendencias conocidas pero no son cifras
-              oficiales. Por eso verás un salto entre 2022 y 2023 (de demo a real). El detalle de fuentes y
-              URLs está en la pestaña <em>Metodología</em>.
+            <p className="text-slate-400">
+              Nota sobre el EBITDA: para 2022–2025 se usa el <em>EBITDA ajustado</em> que reporta Petroperú;
+              para 2019–2021, utilidad operativa + depreciación/amortización. Resto de partidas (ingresos,
+              costos, resultado neto, balance) son las auditadas. Fuentes y URLs en la pestaña{" "}
+              <em>Metodología</em>.
             </p>
 
             <hr className="border-ink-600" />

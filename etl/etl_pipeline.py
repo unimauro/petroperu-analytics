@@ -213,8 +213,9 @@ def run(offline: bool = False) -> None:
                     "Utilidad acumulada a abril 2026: US$208 M; EBITDA: US$395 M.",
             "source": "Petroperú · Reporte financiero 1T 2026 (inversionistas.petroperu.com.pe)",
         },
-        "disclaimer": "Cifras 2023–2025 verificadas (EE.FF. auditados). Años previos marcados "
-                      "'illustrative' son de demostración. Ver data/PROVENANCE.md.",
+        "disclaimer": "Cifras 2019–2025 tomadas de los EE.FF. auditados de Petroperú (US$ miles). "
+                      "EBITDA 2022–2025 = EBITDA ajustado reportado; 2019–2021 = utilidad operativa + D&A. "
+                      "Ver data/PROVENANCE.md.",
     })
     print("OK")
 

@@ -1,7 +1,7 @@
 # Petroperú Analytics
 
 **Plataforma pública y abierta** para analizar la evolución **financiera, operativa y de
-gobierno corporativo de Petroperú (2005–presente)**, con presentación tipo terminal
+gobierno corporativo de Petroperú (2019–2025, EE.FF. auditados)**, con presentación tipo terminal
 financiera (Bloomberg/PowerBI) pero gratuita, estática y verificable. Se despliega en
 **GitHub Pages** sin backend.
 
