@@ -16,11 +16,11 @@
     <text x="510" y="229">grafo de gobierno</text>
   </g>
 
-  <!-- Alertas reales del análisis -->
+  <!-- Datos reales (EE.FF. auditados) -->
   <g font-size="23">
-    <text x="72" y="318" fill="#ef4444">● Patrimonio negativo</text>
-    <text x="72" y="356" fill="#f5a623">● Deuda neta / EBITDA ≈ 50x</text>
-    <text x="72" y="394" fill="#22d3ee">● Cobertura de intereses &lt; 1.0x</text>
+    <text x="72" y="318" fill="#ef4444">● Pérdida neta 2025: −US$ 468 M</text>
+    <text x="72" y="356" fill="#f5a623">● Patrimonio +US$ 1,963 M · deuda ≈ US$ 5,150 M</text>
+    <text x="72" y="394" fill="#22c55e">● 1T 2026 en azul: utilidad +US$ 133 M</text>
   </g>
 
   <!-- Pill: juega a ser director -->

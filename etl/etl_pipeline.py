@@ -199,8 +199,22 @@ def run(offline: bool = False) -> None:
         "macro_status": macro.get("status"),
         "years": [min(r["year"] for r in rows), max(r["year"] for r in rows)],
         "n_indicators": 16,
-        "disclaimer": "Cifras financieras marcadas 'illustrative' son de demostración. "
-                      "Ver data/PROVENANCE.md.",
+        "verified_years": sorted(int(r["year"]) for r in fin_raw if r.get("data_status") == "verified"),
+        "latest_quarter": {
+            "period": "1T 2026",
+            "as_of": "31-mar-2026",
+            "currency": "USD", "unit": "millions",
+            "revenue": 770,
+            "gross_profit": 266,
+            "operating_profit": 230,
+            "adj_ebitda": 273,
+            "net_income": 133,
+            "note": "Primer trimestre con utilidad neta positiva en 4 años (desde 1T 2022). "
+                    "Utilidad acumulada a abril 2026: US$208 M; EBITDA: US$395 M.",
+            "source": "Petroperú · Reporte financiero 1T 2026 (inversionistas.petroperu.com.pe)",
+        },
+        "disclaimer": "Cifras 2023–2025 verificadas (EE.FF. auditados). Años previos marcados "
+                      "'illustrative' son de demostración. Ver data/PROVENANCE.md.",
     })
     print("OK")
 

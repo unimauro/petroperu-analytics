@@ -69,11 +69,27 @@ export interface GraphData {
   edges: { source: string; target: string; type: string }[];
 }
 
+export interface LatestQuarter {
+  period: string;
+  as_of: string;
+  currency: string;
+  unit: string;
+  revenue: number;
+  gross_profit: number;
+  operating_profit: number;
+  adj_ebitda: number;
+  net_income: number;
+  note: string;
+  source: string;
+}
+
 export interface Meta {
   generated_by: string;
   macro_status: string;
   years: [number, number];
   n_indicators: number;
+  verified_years?: number[];
+  latest_quarter?: LatestQuarter;
   disclaimer: string;
 }
 

@@ -10,20 +10,29 @@ interface Props {
  */
 export default function DataStatusBadge({ statuses }: Props) {
   const [open, setOpen] = useState(false);
-  const illustrative = statuses.includes("illustrative");
+  const hasIllustrative = statuses.includes("illustrative");
+  const hasVerified = statuses.includes("verified");
+  const mixed = hasIllustrative && hasVerified;
+
+  const label = mixed
+    ? "◑ Datos mixtos: 2023–2025 reales ⓘ"
+    : hasIllustrative
+      ? "⚠ Datos ilustrativos (demo) ⓘ"
+      : "✓ Datos verificados ⓘ";
+  const cls = hasVerified && !hasIllustrative
+    ? "border-accent-green/40 text-accent-green bg-accent-green/10 hover:bg-accent-green/20"
+    : mixed
+      ? "border-accent-cyan/40 text-accent-cyan bg-accent-cyan/10 hover:bg-accent-cyan/20"
+      : "border-accent-amber/40 text-accent-amber bg-accent-amber/10 hover:bg-accent-amber/20";
 
   return (
     <>
       <button
         onClick={() => setOpen(true)}
-        className={`text-xs px-2.5 py-1 rounded border transition-colors ${
-          illustrative
-            ? "border-accent-amber/40 text-accent-amber bg-accent-amber/10 hover:bg-accent-amber/20"
-            : "border-accent-green/40 text-accent-green bg-accent-green/10 hover:bg-accent-green/20"
-        }`}
+        className={`text-xs px-2.5 py-1 rounded border transition-colors ${cls}`}
         title="Clic para entender el estado de los datos y cómo leer los gráficos"
       >
-        {illustrative ? "⚠ Datos ilustrativos (demo) ⓘ" : "✓ Datos verificados ⓘ"}
+        {label}
       </button>
 
       {open && (
@@ -40,15 +49,16 @@ export default function DataStatusBadge({ statuses }: Props) {
             <h3 className="text-base font-semibold text-slate-100">¿Qué significan los datos?</h3>
 
             <p>
-              <strong className="text-accent-amber">⚠ Datos ilustrativos (demo):</strong> las cifras
-              financieras de este dashboard son de <strong>demostración</strong>. Imitan las tendencias
-              públicas conocidas de Petroperú (caída por la pandemia en 2020, pérdidas de 2022, capex de
-              Talara), pero <strong>no son cifras oficiales</strong> ni deben citarse como tales.
+              <strong className="text-accent-cyan">◑ Datos mixtos.</strong> Los ejercicios{" "}
+              <strong className="text-accent-green">2023, 2024 y 2025 son REALES</strong>, tomados de los
+              Estados Financieros auditados de Petroperú (publicados en su web de inversionistas y la SMV).
+              Además, el <strong>1T 2026</strong> se muestra en el Resumen con cifras oficiales.
             </p>
             <p>
-              Para análisis real, se reemplazan por los <strong>Estados Financieros Auditados</strong> y las
-              Memorias, marcándolas como <span className="text-accent-green">✓ verificadas</span>. Mientras
-              tanto, este aviso permanece visible. Detalle de fuentes en la pestaña <em>Metodología</em>.
+              Los años <strong className="text-accent-amber">2005–2022</strong> siguen siendo{" "}
+              <strong>ilustrativos</strong> (demostración): imitan tendencias conocidas pero no son cifras
+              oficiales. Por eso verás un salto entre 2022 y 2023 (de demo a real). El detalle de fuentes y
+              URLs está en la pestaña <em>Metodología</em>.
             </p>
 
             <hr className="border-ink-600" />

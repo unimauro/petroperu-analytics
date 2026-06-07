@@ -15,6 +15,8 @@ export default function Summary() {
 }
 
 function Content({ rows }: { rows: FinancialRow[] }) {
+  const { meta } = useData();
+  const lq = meta?.latest_quarter;
   const last = latest(rows);
   const netDebtEbitda = last.ebitda > 0 ? (last.total_debt - last.cash) / last.ebitda : null;
   const lossYears = rows.filter((r) => r.net_income < 0).map((r) => r.year);
@@ -74,6 +76,25 @@ function Content({ rows }: { rows: FinancialRow[] }) {
           </div>
         </div>
       </div>
+
+      {/* Highlight del último trimestre (dato más reciente, verificado) */}
+      {lq && (
+        <div className="card border-accent-green/40 bg-accent-green/5">
+          <div className="flex items-start gap-3">
+            <span className="text-2xl">🟢</span>
+            <div className="flex-1">
+              <div className="font-semibold text-accent-green">Lo más reciente · {lq.period} ({lq.as_of})</div>
+              <div className="flex flex-wrap gap-x-6 gap-y-1 text-sm text-slate-300 mt-1">
+                <span>Utilidad neta: <strong className="text-accent-green">+US$ {lq.net_income} M</strong></span>
+                <span>EBITDA ajustado: <strong className="text-accent-green">+US$ {lq.adj_ebitda} M</strong></span>
+                <span>Utilidad bruta: <strong>+US$ {lq.gross_profit} M</strong></span>
+                <span>Ingresos: US$ {lq.revenue} M</span>
+              </div>
+              <div className="text-xs text-slate-500 mt-1.5">{lq.note} · Fuente: {lq.source}</div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* KPIs del estado actual */}
       <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3">
