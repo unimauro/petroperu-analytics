@@ -8,7 +8,7 @@ import { baseOption } from "../lib/echart-theme";
 import { PALETTE, usdMillions, ratio } from "../lib/format";
 import { latest } from "../lib/selectors";
 import ShareButtons from "../components/ShareButtons";
-import type { FinancialRow } from "../lib/data";
+import type { FinancialRow, LatestQuarter } from "../lib/data";
 
 export default function DecisionGame() {
   const { financials } = useData();
@@ -34,17 +34,60 @@ interface Decisions {
   products: Set<string>;
 }
 
+// Punto de partida del simulador (en miles de US$).
+interface Base {
+  label: string;       // etiqueta del escenario
+  startYear: number;   // año del primer punto de la trayectoria
+  ebitda: number;
+  totalDebt: number;
+  cash: number;
+  revenue: number;
+  da: number;
+  equity: number;
+  interestExpense: number;
+}
+
+type BaselineMode = "cierre" | "runrate";
+
 const TARGET = 4; // deuda neta / EBITDA "manejable"
 
-function simulate(last: FinancialRow, d: Decisions) {
+/** Construye el punto de partida real según el modo elegido. */
+function buildBase(last: FinancialRow, lq: LatestQuarter | undefined, mode: BaselineMode): Base {
+  if (mode === "runrate" && lq) {
+    // Anualiza el último trimestre real (×4). lq viene en millones → ×1000 = miles.
+    return {
+      label: `${lq.period} anualizado (run-rate)`,
+      startYear: last.year + 1,
+      ebitda: lq.adj_ebitda * 4 * 1000,
+      revenue: lq.revenue * 4 * 1000,
+      totalDebt: last.total_debt,            // deuda a cierre 2025 (proxy)
+      cash: last.cash,
+      da: last.depreciation_amortization,
+      equity: last.equity + lq.net_income * 1000,
+      interestExpense: last.interest_expense,
+    };
+  }
+  return {
+    label: `Cierre ${last.year} (anual auditado)`,
+    startYear: last.year,
+    ebitda: last.ebitda,
+    revenue: last.revenue,
+    totalDebt: last.total_debt,
+    cash: last.cash,
+    da: last.depreciation_amortization,
+    equity: last.equity,
+    interestExpense: last.interest_expense,
+  };
+}
+
+function simulate(base: Base, d: Decisions) {
   const K = 1000; // millones -> miles
-  const ebitda0 = last.ebitda;
-  const grossDebt0 = last.total_debt;
-  const cash0 = last.cash;
-  const netDebt0 = grossDebt0 - cash0;
-  const revenue0 = last.revenue;
-  const da = last.depreciation_amortization;
-  const rate0 = grossDebt0 > 0 ? last.interest_expense / grossDebt0 : 0.06;
+  const ebitda0 = base.ebitda;
+  const grossDebt0 = base.totalDebt;
+  const netDebt0 = grossDebt0 - base.cash;
+  const revenue0 = base.revenue;
+  const da = base.da;
+  const rate0 = grossDebt0 > 0 ? base.interestExpense / grossDebt0 : 0.06;
 
   const prods = PRODUCTS.filter((p) => d.products.has(p.id));
   const capex = prods.reduce((s, p) => s + p.capex, 0) * K;
@@ -55,11 +98,11 @@ function simulate(last: FinancialRow, d: Decisions) {
   const injections = (d.stateCapital + d.privateInvest) * K;
   let grossDebt = Math.max(0, grossDebt0 + d.extraCredit * K);
   let netDebt = Math.max(0, netDebt0 + capex - injections - d.extraCredit * K);
-  let equity = last.equity + injections;
+  let equity = base.equity + injections;
   const rate = Math.max(0.005, rate0 - d.refiCut / 100);
   const g = (d.ebitdaGrowth + prodGrowth) / 100;
 
-  const path = [{ year: last.year, ebitda: ebitda0, netDebt, equity, leverage: ebitda0 > 0 ? netDebt / ebitda0 : null }];
+  const path = [{ year: base.startYear, ebitda: ebitda0, netDebt, equity, leverage: ebitda0 > 0 ? netDebt / ebitda0 : null }];
   let cumState = 0, cumPriv = 0;
 
   for (let t = 1; t <= d.horizon; t++) {
@@ -73,21 +116,32 @@ function simulate(last: FinancialRow, d: Decisions) {
     const priv = d.privateInvest > 0 && netIncome > 0 ? netIncome * d.privateShare / 100 : 0;
     cumPriv += priv; cumState += netIncome - priv;
     equity += netIncome;
-    path.push({ year: last.year + t, ebitda, netDebt, equity, leverage: ebitda > 0 ? netDebt / ebitda : null });
+    path.push({ year: base.startYear + t, ebitda, netDebt, equity, leverage: ebitda > 0 ? netDebt / ebitda : null });
   }
 
   const success = path.find((p, i) => i > 0 && p.equity > 0 && p.leverage !== null && p.leverage <= TARGET);
-  return { path, capex, success, cumState, cumPriv, finalEquity: path.at(-1)!.equity, finalLeverage: path.at(-1)!.leverage };
+  const start = path[0];
+  return {
+    path, capex, success, cumState, cumPriv,
+    startLeverage: start.leverage, startEbitda: ebitda0, startNetDebt: netDebt0, startEquity: base.equity,
+    finalEquity: path[path.length - 1].equity, finalLeverage: path[path.length - 1].leverage,
+  };
 }
 
 function Game({ rows }: { rows: FinancialRow[] }) {
+  const { meta } = useData();
   const last = latest(rows);
+  const lq = meta?.latest_quarter;
+
+  const [mode, setMode] = useState<BaselineMode>(lq ? "runrate" : "cierre");
   const [d, setD] = useState<Decisions>({
-    ebitdaGrowth: 5, costCut: 0, amortShare: 35, horizon: 7,
+    ebitdaGrowth: 4, costCut: 1, amortShare: 40, horizon: 7,
     extraCredit: 0, refiCut: 0, stateCapital: 0, privateInvest: 0, privateShare: 30,
     products: new Set(),
   });
-  const sim = useMemo(() => simulate(last, d), [last, d]);
+
+  const base = useMemo(() => buildBase(last, lq, mode), [last, lq, mode]);
+  const sim = useMemo(() => simulate(base, d), [base, d]);
 
   const set = (patch: Partial<Decisions>) => setD({ ...d, ...patch });
   const toggleProduct = (id: string) => {
@@ -95,6 +149,10 @@ function Game({ rows }: { rows: FinancialRow[] }) {
     next.has(id) ? next.delete(id) : next.add(id);
     set({ products: next });
   };
+  const reset = () => setD({
+    ebitdaGrowth: 4, costCut: 1, amortShare: 40, horizon: 7,
+    extraCredit: 0, refiCut: 0, stateCapital: 0, privateInvest: 0, privateShare: 30, products: new Set(),
+  });
 
   const x = sim.path.map((p) => String(p.year));
   const leverageOpt = {
@@ -124,10 +182,38 @@ function Game({ rows }: { rows: FinancialRow[] }) {
         <h1 className="text-xl font-bold text-slate-100">🎮 Juega a ser director — ¿puedes reflotar Petroperú?</h1>
         <p className="text-sm text-slate-500 max-w-3xl">
           Toma decisiones de gerencia y observa si Petroperú vuelve a ser solvente. <strong>Objetivo:</strong> patrimonio
-          positivo y deuda neta/EBITDA ≤ {TARGET}x dentro del horizonte. Es un <em>simulador educativo</em> con efectos
-          ilustrativos — no una proyección oficial.
+          positivo y deuda neta/EBITDA ≤ {TARGET}x dentro del horizonte. Parte de <strong>cifras reales auditadas</strong>;
+          los efectos de cada palanca son ilustrativos (no es una proyección oficial).
         </p>
       </div>
+
+      {/* Punto de partida (escenario) */}
+      <ChartCard title="Punto de partida" subtitle="Desde qué realidad arrancas la gestión">
+        <div className="flex flex-wrap items-center gap-2 mb-3">
+          <button onClick={() => setMode("cierre")}
+            className={`text-xs px-3 py-1.5 rounded border transition-colors ${mode === "cierre" ? "border-accent-amber/60 text-accent-amber bg-accent-amber/10" : "border-ink-600 text-slate-400"}`}>
+            Cierre {last.year} (modo difícil)
+          </button>
+          <button onClick={() => setMode("runrate")} disabled={!lq}
+            className={`text-xs px-3 py-1.5 rounded border transition-colors ${mode === "runrate" ? "border-accent-green/60 text-accent-green bg-accent-green/10" : "border-ink-600 text-slate-400"} ${!lq ? "opacity-40" : ""}`}>
+            1T 2026 anualizado (momentum real)
+          </button>
+          <button onClick={reset} className="text-xs px-3 py-1.5 rounded border border-ink-600 text-slate-500 hover:text-slate-200 ml-auto">
+            ↺ Reiniciar decisiones
+          </button>
+        </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+          <KpiCard label="EBITDA de partida" value={usdMillions(sim.startEbitda)} tone={sim.startEbitda >= 0 ? "good" : "bad"} hint={base.label} />
+          <KpiCard label="Deuda neta de partida" value={usdMillions(sim.startNetDebt)} tone="warn" />
+          <KpiCard label="Apalancamiento inicial" value={sim.startLeverage && sim.startLeverage > 0 ? ratio(sim.startLeverage) : "n/d"} tone={(sim.startLeverage ?? 99) <= TARGET ? "good" : "bad"} hint="Deuda neta / EBITDA al inicio" />
+          <KpiCard label="Patrimonio de partida" value={usdMillions(sim.startEquity)} tone={sim.startEquity >= 0 ? "good" : "bad"} />
+        </div>
+        <p className="text-xs text-slate-500 mt-2">
+          {mode === "runrate"
+            ? "Run-rate: anualiza el 1T 2026 real (EBITDA ×4). Refleja el momentum de la recuperación, pero asume que ese ritmo se sostiene todo el año."
+            : `Cierre ${last.year}: EBITDA anual casi nulo → apalancamiento de partida altísimo. El reto está en hacer despegar el EBITDA.`}
+        </p>
+      </ChartCard>
 
       {/* Veredicto del juego */}
       <div className={`card ${sim.success ? "border-accent-green/50 bg-accent-green/5" : "border-accent-amber/40 bg-accent-amber/5"}`}>
@@ -149,7 +235,7 @@ function Game({ rows }: { rows: FinancialRow[] }) {
       {/* Resultados */}
       <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
         <KpiCard label="Año de reflote" value={sim.success ? String(sim.success.year) : "—"} tone={sim.success ? "good" : "warn"} />
-        <KpiCard label="Apalancamiento final" value={sim.finalLeverage ? ratio(sim.finalLeverage) : "n/d"} tone={(sim.finalLeverage ?? 99) <= TARGET ? "good" : "bad"} />
+        <KpiCard label="Apalancamiento final" value={sim.finalLeverage && sim.finalLeverage > 0 ? ratio(sim.finalLeverage) : "n/d"} tone={(sim.finalLeverage ?? 99) <= TARGET ? "good" : "bad"} />
         <KpiCard label="Patrimonio final" value={usdMillions(sim.finalEquity)} tone={sim.finalEquity >= 0 ? "good" : "bad"} />
         <KpiCard label="Inversión requerida" value={usdMillions(sim.capex)} hint="Capex de los nuevos productos seleccionados" />
         <KpiCard label="Utilidades a privados" value={usdMillions(sim.cumPriv)} hint="Lo que se cede a la inversión privada (acumulado)" tone="warn" />
@@ -213,8 +299,9 @@ function Game({ rows }: { rows: FinancialRow[] }) {
       </div>
 
       <div className="card text-xs text-slate-500">
-        ⚠️ Modelo educativo simplificado: los efectos de cada producto/decisión son ilustrativos y las cifras de
-        partida son demo. Sirve para razonar trade-offs (crédito vs. dilución, capex vs. solvencia), no para predecir.
+        ⚠️ Modelo educativo simplificado. Parte de cifras <strong>reales auditadas</strong> (cierre {last.year} o run-rate
+        1T 2026), pero los efectos de cada producto/decisión son ilustrativos. Sirve para razonar trade-offs
+        (crédito vs. dilución, capex vs. solvencia), no para predecir.
         Utilidades cedidas a privados acumuladas: <span className="text-accent-amber">{usdMillions(sim.cumPriv)}</span> ·
         retenidas por el Estado: <span className="text-accent-green">{usdMillions(sim.cumState)}</span>.
       </div>
